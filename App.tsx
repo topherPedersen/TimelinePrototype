@@ -9,8 +9,8 @@ function App(): React.JSX.Element {
     <SafeAreaView style={{ flex: 1 }}>
       <View>
         <View style={{ flexDirection: 'row' }}>
-          <View style={{ flex: 2, backgroundColor: 'white', alignItems: 'center' }}>
-            <View style={{ height: 20, width: 2, backgroundColor: 'grey' }}></View>
+          <View style={{ flexDirection: 'column', flex: 2, backgroundColor: 'white', alignItems: 'center' }}>
+            <View style={{ flexGrow: 1, width: 2, backgroundColor: 'grey' }}></View>
           </View>
           <View style={{ flex: 8, backgroundColor: 'blue', height: 100 }}></View>
         </View>

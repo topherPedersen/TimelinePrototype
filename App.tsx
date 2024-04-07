@@ -8,6 +8,14 @@ interface TimelineProps {
   completedMilestones: number[];
 }
 
+interface LineProps {
+  color: string;
+}
+
+function Line(props: LineProps) {
+  return <View style={[ styles.line, { backgroundColor: props.color }]}></View>;
+}
+
 function Timeline(props: TimelineProps) {
   return (
     <View>
@@ -18,8 +26,7 @@ function Timeline(props: TimelineProps) {
         return (
           <View style={styles.row}>
             <View style={[ styles.column, styles.timelineColumn ]}>
-              {/* Actual "Line" which makes up the Timeline */}
-              <View style={[ styles.line, { backgroundColor: timelineColor }]}></View>
+              <Line color={timelineColor} />
               {/* Container for Timeline "Dot" */}
               <View style={styles.dotContainer}>
                 {/* Actual "Dot" on the Timeline */}

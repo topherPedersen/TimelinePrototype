@@ -15,7 +15,7 @@ function App(): React.JSX.Element {
             {/* Container for Timeline "Dot" */}
             <View style={{ zIndex: 1000, position: 'absolute', width: '100%', height: '100%', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
               {/* Actual "Dot" on the Timeline */}
-              <View style={{ height: 20, width: 20, backgroundColor: 'grey', opacity: 1 }}></View>
+              <View style={{ height: 10, width: 10, backgroundColor: 'grey', borderRadius: 50 }}></View>
             </View>
           </View>
           <View style={{ flex: 8, backgroundColor: 'blue', height: 100 }}></View>

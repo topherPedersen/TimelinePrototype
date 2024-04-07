@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  SafeAreaView, View,
+  SafeAreaView, StyleSheet, View,
 } from 'react-native';
 
 interface TimelineProps {
@@ -35,12 +35,11 @@ function Timeline(props: TimelineProps) {
 }
 
 function App(): React.JSX.Element {
-
   const components = [
-    <View style={{ flex: 8, backgroundColor: 'purple', height: 100 }}></View>,
-    <View style={{ flex: 8, backgroundColor: 'yellow', height: 200 }}></View>,
-    <View style={{ flex: 8, backgroundColor: 'purple', height: 100 }}></View>,
-    <View style={{ flex: 8, backgroundColor: 'yellow', height: 200 }}></View>,
+    <View style={styles.aComponent}></View>,
+    <View style={styles.bComponent}></View>,
+    <View style={styles.cComponent}></View>,
+    <View style={styles.dComponent}></View>,
   ];
 
   const completedMilestones = [0, 1, 2];
@@ -54,5 +53,28 @@ function App(): React.JSX.Element {
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  aComponent: {
+    flex: 8, 
+    backgroundColor: 'red', 
+    height: 150,
+  },
+  bComponent: {
+    flex: 8, 
+    backgroundColor: 'orange', 
+    height: 175,
+  },
+  cComponent: {
+    flex: 8, 
+    backgroundColor: 'yellow', 
+    height: 100, 
+  },
+  dComponent: {
+    flex: 8, 
+    backgroundColor: 'green', 
+    height: 200, 
+  },
+});
 
 export default App;

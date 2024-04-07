@@ -10,9 +10,12 @@ function App(): React.JSX.Element {
       <View>
         <View style={{ flexDirection: 'row' }}>
           <View style={{ flexDirection: 'column', flex: 2, backgroundColor: 'white', alignItems: 'center' }}>
-            <View style={{ flexGrow: 1, width: 2, backgroundColor: 'grey' }}></View>
-            <View style={{ position: 'absolute', width: '100%', height: '100%', backgroundColor: 'purple', opacity: 0 }}>
-
+            {/* Actual "Line" which makes up the Timeline */}
+            <View style={{ zIndex: 2000, flexGrow: 1, width: 2, backgroundColor: 'grey' }}></View>
+            {/* Container for Timeline "Dot" */}
+            <View style={{ zIndex: 1000, position: 'absolute', width: '100%', height: '100%', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+              {/* Actual "Dot" on the Timeline */}
+              <View style={{ height: 20, width: 20, backgroundColor: 'grey', opacity: 1 }}></View>
             </View>
           </View>
           <View style={{ flex: 8, backgroundColor: 'blue', height: 100 }}></View>

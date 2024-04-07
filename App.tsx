@@ -9,29 +9,6 @@ interface TimelineProps {
 }
 
 function Timeline(props: TimelineProps) {
-  // return (
-  //   <View>
-  //     {props.components.map((component: React.JSX.Element, index: number) => {
-  //       const completed = props.completedMilestones.includes(index);
-  //       const timelineColor = completed ? 'blue' : 'grey';
-
-  //       return (
-  //         <View style={{ flexDirection: 'row' }}>
-  //           <View style={{ flexDirection: 'column', flex: 2, backgroundColor: 'white', alignItems: 'center' }}>
-  //             {/* Actual "Line" which makes up the Timeline */}
-  //             <View style={{ zIndex: 2000, flexGrow: 1, width: 2, backgroundColor: timelineColor }}></View>
-  //             {/* Container for Timeline "Dot" */}
-  //             <View style={{ zIndex: 1000, position: 'absolute', width: '100%', height: '100%', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-  //               {/* Actual "Dot" on the Timeline */}
-  //               <View style={{ height: 10, width: 10, backgroundColor: timelineColor, borderRadius: 50 }}></View>
-  //             </View>
-  //           </View>
-  //           {component}
-  //         </View>
-  //       )
-  //     })}
-  //   </View>
-  // );
   return (
     <View>
       {props.components.map((component: React.JSX.Element, index: number) => {
@@ -44,9 +21,9 @@ function Timeline(props: TimelineProps) {
               {/* Actual "Line" which makes up the Timeline */}
               <View style={[ styles.line, { backgroundColor: timelineColor }]}></View>
               {/* Container for Timeline "Dot" */}
-              <View style={{ zIndex: 1000, position: 'absolute', width: '100%', height: '100%', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+              <View style={styles.dotContainer}>
                 {/* Actual "Dot" on the Timeline */}
-                <View style={{ height: 10, width: 10, backgroundColor: timelineColor, borderRadius: 50 }}></View>
+                <View style={[ styles.dot, { backgroundColor: timelineColor }]}></View>
               </View>
             </View>
             {component}
@@ -113,7 +90,21 @@ const styles = StyleSheet.create({
     zIndex: 2000, 
     flexGrow: 1, 
     width: 2,
-  }
+  },
+  dotContainer: {
+    zIndex: 1000,
+    position: 'absolute', 
+    width: '100%', 
+    height: '100%', 
+    backgroundColor: 'white', 
+    justifyContent: 'center', 
+    alignItems: 'center'
+  },
+  dot: {
+    height: 10, 
+    width: 10, 
+    borderRadius: 50,
+  },
 });
 
 export default App;

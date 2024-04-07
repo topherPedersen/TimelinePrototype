@@ -40,9 +40,9 @@ function Timeline(props: TimelineProps) {
 
         return (
           <View style={styles.row}>
-            <View style={[ styles.column, { flex: 2, backgroundColor: 'white', alignItems: 'center' }]}>
+            <View style={[ styles.column, styles.timelineColumn ]}>
               {/* Actual "Line" which makes up the Timeline */}
-              <View style={{ zIndex: 2000, flexGrow: 1, width: 2, backgroundColor: timelineColor }}></View>
+              <View style={[ styles.line, { backgroundColor: timelineColor }]}></View>
               {/* Container for Timeline "Dot" */}
               <View style={{ zIndex: 1000, position: 'absolute', width: '100%', height: '100%', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
                 {/* Actual "Dot" on the Timeline */}
@@ -104,6 +104,16 @@ const styles = StyleSheet.create({
   column: {
     flexDirection: 'column',
   },
+  timelineColumn: {
+    flex: 2, 
+    backgroundColor: 'white',
+     alignItems: 'center'
+  },
+  line: {
+    zIndex: 2000, 
+    flexGrow: 1, 
+    width: 2,
+  }
 });
 
 export default App;

@@ -3,7 +3,6 @@ import {
   SafeAreaView, View,
 } from 'react-native';
 
-// TODO: Try and add a prototype of a timeline component to the first column below
 function App(): React.JSX.Element {
   return (
     <SafeAreaView style={{ flex: 1 }}>

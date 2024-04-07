@@ -60,11 +60,7 @@ function Timeline(props: TimelineProps) {
   //     </View>
   //   </View>
   // );
-  return (
-    <>
-      {props.components.map((component: React.JSX.Element) => component)}
-    </>
-  );
+  return props.components.map((component: React.JSX.Element) => component);
 }
 
 function App(): React.JSX.Element {

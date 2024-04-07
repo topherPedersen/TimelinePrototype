@@ -11,6 +11,7 @@ function App(): React.JSX.Element {
         <View style={{ flexDirection: 'row' }}>
           <View style={{ flexDirection: 'column', flex: 2, backgroundColor: 'white', alignItems: 'center' }}>
             <View style={{ flexGrow: 1, width: 2, backgroundColor: 'grey' }}></View>
+            <View style={{ position: 'absolute', marginTop: 25, width: 20, height: 20, backgroundColor: 'purple' }}></View>
           </View>
           <View style={{ flex: 8, backgroundColor: 'blue', height: 100 }}></View>
         </View>

@@ -33,7 +33,7 @@ function Timeline(props: TimelineProps) {
     <View>
       {props.components.map((component: React.JSX.Element, index: number) => {
         const completed = props.completedMilestones.includes(index);
-        const timelineColor = completed ? 'blue' : 'grey';
+        const timelineColor = completed ? 'purple' : 'grey';
 
         return (
           <View style={styles.row}>

@@ -12,8 +12,20 @@ interface LineProps {
   color: string;
 }
 
+interface DotProps {
+  color: string;
+}
+
 function Line(props: LineProps) {
   return <View style={[ styles.line, { backgroundColor: props.color }]}></View>;
+}
+
+function Dot(props: DotProps) {
+  return (
+    <View style={styles.dotContainer}>
+      <View style={[ styles.dot, { backgroundColor: props.color }]}></View>
+    </View>
+  );
 }
 
 function Timeline(props: TimelineProps) {
@@ -27,11 +39,7 @@ function Timeline(props: TimelineProps) {
           <View style={styles.row}>
             <View style={[ styles.column, styles.timelineColumn ]}>
               <Line color={timelineColor} />
-              {/* Container for Timeline "Dot" */}
-              <View style={styles.dotContainer}>
-                {/* Actual "Dot" on the Timeline */}
-                <View style={[ styles.dot, { backgroundColor: timelineColor }]}></View>
-              </View>
+              <Dot color={timelineColor} />
             </View>
             {component}
           </View>

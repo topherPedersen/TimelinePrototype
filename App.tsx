@@ -4,7 +4,8 @@ import {
 } from 'react-native';
 
 interface TimelineProps {
-  components: React.JSX.Element[];
+  // components: React.JSX.Element[];
+  children: React.ReactNode;
   completedMilestones: number[];
 }
 
@@ -28,25 +29,51 @@ function Dot(props: DotProps) {
   );
 }
 
-function Timeline(props: TimelineProps) {
-  return (
-    <View>
-      {props.components.map((component: React.JSX.Element, index: number) => {
-        const completed = props.completedMilestones.includes(index);
-        const timelineColor = completed ? 'purple' : 'grey';
+// function Timeline(props: TimelineProps) {
+//   return (
+//     <View>
+//       {props.components.map((component: React.JSX.Element, index: number) => {
+//         const completed = props.completedMilestones.includes(index);
+//         const timelineColor = completed ? 'purple' : 'grey';
 
-        return (
-          <View style={styles.row}>
-            <View style={[ styles.column, styles.timelineColumn ]}>
-              <Line color={timelineColor} />
-              <Dot color={timelineColor} />
+//         return (
+//           <View style={styles.row}>
+//             <View style={[ styles.column, styles.timelineColumn ]}>
+//               <Line color={timelineColor} />
+//               <Dot color={timelineColor} />
+//             </View>
+//             {component}
+//           </View>
+//         )
+//       })}
+//     </View>
+//   );
+// }
+
+function Timeline(props: TimelineProps) {
+  if (props?.children !== undefined) {
+    return (
+      <View>
+        {/* @ts-ignore */}
+        {props?.children?.map((component: React.JSX.Element, index: number) => {
+          const completed = props.completedMilestones.includes(index);
+          const timelineColor = completed ? 'purple' : 'grey';
+  
+          return (
+            <View style={styles.row}>
+              <View style={[ styles.column, styles.timelineColumn ]}>
+                <Line color={timelineColor} />
+                <Dot color={timelineColor} />
+              </View>
+              {component}
             </View>
-            {component}
-          </View>
-        )
-      })}
-    </View>
-  );
+          )
+        })}
+      </View>
+    );
+  }
+
+  return null;
 }
 
 function App(): React.JSX.Element {
@@ -61,10 +88,9 @@ function App(): React.JSX.Element {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Timeline 
-        components={components} 
-        completedMilestones={completedMilestones}
-      />
+      <Timeline completedMilestones={completedMilestones}>
+        {components}
+      </Timeline>
     </SafeAreaView>
   );
 }

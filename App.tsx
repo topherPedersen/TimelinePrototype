@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import {
   SafeAreaView, StyleSheet, View,
 } from 'react-native';
 
 interface TimelineProps {
   // components: React.JSX.Element[];
-  children: React.ReactNode;
+  // children: React.ReactNode;
+  // children: ReactElement<any> | Array<ReactElement<any>>; // Reference for typing children: https://dev.to/devjosemanuel/working-with-react-children-4on7
+  children: Array<ReactElement<any>>; // Reference for typing children: https://dev.to/devjosemanuel/working-with-react-children-4on7
   completedMilestones: number[];
 }
 
@@ -51,10 +53,12 @@ function Dot(props: DotProps) {
 // }
 
 function Timeline(props: TimelineProps) {
-  if (props?.children !== undefined) {
+  const hasMultipleChildren = props?.children !== undefined && props.children.constructor === Array;
+  const hasOnlyChild = props?.children !== undefined && props.children.constructor !== Array;
+
+  if (hasMultipleChildren) {
     return (
       <View>
-        {/* @ts-ignore */}
         {props?.children?.map((component: React.JSX.Element, index: number) => {
           const completed = props.completedMilestones.includes(index);
           const timelineColor = completed ? 'purple' : 'grey';
@@ -71,18 +75,34 @@ function Timeline(props: TimelineProps) {
         })}
       </View>
     );
+  } else if (hasOnlyChild) {
+    const timelineColor = 'purple';
+
+    return (
+      <View>
+        <View style={styles.row}>
+          <View style={[ styles.column, styles.timelineColumn ]}>
+            <Line color={timelineColor} />
+            <Dot color={timelineColor} />
+          </View>
+          {props.children}
+        </View>
+      </View>
+    );
   }
 
   return null;
 }
 
 function App(): React.JSX.Element {
-  const components = [
-    <View style={styles.aComponent}></View>,
-    <View style={styles.bComponent}></View>,
-    <View style={styles.cComponent}></View>,
-    <View style={styles.dComponent}></View>,
-  ];
+  // const components = [
+  //   <View style={styles.aComponent}></View>,
+  //   <View style={styles.bComponent}></View>,
+  //   <View style={styles.cComponent}></View>,
+  //   <View style={styles.dComponent}></View>,
+  // ];
+
+  const components = <View style={styles.aComponent}></View>;
 
   const completedMilestones = [0, 1, 2];
 

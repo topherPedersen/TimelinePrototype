@@ -7,7 +7,7 @@ interface TimelineProps {
   // components: React.JSX.Element[];
   // children: React.ReactNode;
   // children: ReactElement<any> | Array<ReactElement<any>>; // Reference for typing children: https://dev.to/devjosemanuel/working-with-react-children-4on7
-  children: Array<ReactElement<any>>; // Reference for typing children: https://dev.to/devjosemanuel/working-with-react-children-4on7
+  children: Array<ReactElement<any>> | React.JSX.Element; // Reference for typing children: https://dev.to/devjosemanuel/working-with-react-children-4on7
   completedMilestones: number[];
 }
 
@@ -76,7 +76,8 @@ function Timeline(props: TimelineProps) {
       </View>
     );
   } else if (hasOnlyChild) {
-    const timelineColor = 'purple';
+    const completed = props.completedMilestones.includes(0);
+    const timelineColor = completed ? 'purple' : 'grey';
 
     return (
       <View>

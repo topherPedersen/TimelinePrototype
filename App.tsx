@@ -4,10 +4,7 @@ import {
 } from 'react-native';
 
 interface TimelineProps {
-  // components: React.JSX.Element[];
-  // children: React.ReactNode;
-  // children: ReactElement<any> | Array<ReactElement<any>>; // Reference for typing children: https://dev.to/devjosemanuel/working-with-react-children-4on7
-  children: Array<ReactElement<any>> | React.JSX.Element; // Reference for typing children: https://dev.to/devjosemanuel/working-with-react-children-4on7
+  children: React.ReactNode | React.JSX.Element | React.JSX.Element[] | any; // Need to use type any here or TypeScript will give us an error when we try to call .map on children
   completedMilestones: number[];
 }
 
@@ -30,27 +27,6 @@ function Dot(props: DotProps) {
     </View>
   );
 }
-
-// function Timeline(props: TimelineProps) {
-//   return (
-//     <View>
-//       {props.components.map((component: React.JSX.Element, index: number) => {
-//         const completed = props.completedMilestones.includes(index);
-//         const timelineColor = completed ? 'purple' : 'grey';
-
-//         return (
-//           <View style={styles.row}>
-//             <View style={[ styles.column, styles.timelineColumn ]}>
-//               <Line color={timelineColor} />
-//               <Dot color={timelineColor} />
-//             </View>
-//             {component}
-//           </View>
-//         )
-//       })}
-//     </View>
-//   );
-// }
 
 function Timeline(props: TimelineProps) {
   const hasMultipleChildren = props?.children !== undefined && props.children.constructor === Array;

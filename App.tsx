@@ -72,14 +72,12 @@ function Timeline(props: TimelineProps) {
 }
 
 function App(): React.JSX.Element {
-  // const components = [
-  //   <View style={styles.aComponent}></View>,
-  //   <View style={styles.bComponent}></View>,
-  //   <View style={styles.cComponent}></View>,
-  //   <View style={styles.dComponent}></View>,
-  // ];
-
-  const components = <View style={styles.aComponent}></View>;
+  const components = [
+    <View style={styles.aComponent}></View>,
+    <View style={styles.bComponent}></View>,
+    <View style={styles.cComponent}></View>,
+    <View style={styles.dComponent}></View>,
+  ];
 
   const completedMilestones = [0, 1, 2];
 
